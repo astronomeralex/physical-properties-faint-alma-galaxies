@@ -53,20 +53,25 @@ and $\Omega_k = 0$ \citep{planck13}.
 \section{Sample Selection} 
 \label{sec:sample}
 
-Our sample comes from \cite{fujimoto15}, who studied serendipitously discovered sub-mm galaxies in 
-120 deep ALMA pointings. This work achieved depths of 0.05 mJy at 1.2mm in the field and 0.02 mJy 
-with the assistance of gravitational lensing in A1689; it discovered a total of 133 galaxies, of which 65 galaxies 
-were in SXDS and A1689, which both have a rich set of multi-wavelength imaging. Of the 65 galaxies, 
-17 are detected in the optical - NIR images and thus spectral energy distribution fitting can be applied to 
-understand the physical properties of this sample. Two of these sources are in A1689 and the remaining
-15 are in SXDS.
+Our sample comes from \citet{fujimoto15}, hereafter F15, who studied serendipitously discovered sub-mm galaxies in 
+120 deep ALMA pointings pulled from the ALMA archive. This work achieved depths of 0.05 mJy at 1.2mm in the field and 0.02 mJy 
+with the assistance of gravitational lensing in A1689; it discovered a total of 133 galaxies. Many of the ALMA observations in F15 were not
+in deep fields with ancillary photometry sufficient to identify counterparts. Thus, F15 focused on identifying counterparts in Subaru XMM-Newton Deep 
+Survey \citep[SXDS;][]{furusawa08} and Abel 1689 (A1689), both of which are covered by multi-wavelength surveys. 
+Out of 65 serendipitous ALMA sources, F15 identified 17 counterparts -- 2 in A1689 and 15 in SXDS. 
 
-The photometry for our analysis comes from a variety of multi-wavelength surveys in these fields.
+% add in cosmos counterparts
+To ensure were were not missing any counterparts, we searched for counterparts for each galaxy in 
+We also identified an optical counterpart for F15 source ID 7 by searching through the \textit{Hubble} Source Catalog 
+(HSC; Whitmore et al., in prep) and Sloan Digital Sky Survey \citep[SDSS;][]{york2000} DR12 \citep{alam15} imaging data 
+\citep{fukugita96, gunn98, hogg01, smith02, pier03, ivezic04, gunn06, tucker06, padmanabhan08, doi10}.
+
+The photometry for our analysis for the counterparts identified in F15 comes from a variety of multi-wavelength surveys in these fields.
 In SXDS we use the following bands \textit{u*} (Foucaud et al., in prep.), \textit{B, V, R, i', z'} \citep{furusawa08},
 \textit{J, H, K} \citep[UKIDSS;\footnotemark][]{lawrence07} 3.6 - 24 $\mu$m \citep[SWIRE, SpUDS, SEDS;][]{lonsdale03, ashby13}
 250 - 500 $\mu$m \citep[HerMES;][]{oliver12, smith12, wang14} and 1.4 GHz \citep{simpson06}.
-In A1689 we use \textit{g$_{475}$, r$_{625}$, i$_{775}$, z$_{850}$, J$_{110}$} \& \textit{H}$_{160}$ from the \textit{Hubble} Source Catalog
-(HSC; Whitmore et al., in prep), 3.6 - 24 $\mu$m from \textit{Spitzer} Enhanced Imaging Products (SEIP), and 250 - 500 $\mu$m (HerMES).
+In A1689 we use \textit{g$_{475}$, r$_{625}$, i$_{775}$, z$_{850}$, J$_{110}$} \& \textit{H}$_{160}$ from the \textit{Hubble} Source Catalog,
+ 3.6 - 24 $\mu$m from \textit{Spitzer} Enhanced Imaging Products (SEIP), and 250 - 500 $\mu$m (HerMES).
 
 \footnotetext{The UKIDSS project is defined in \citet{lawrence07}. UKIDSS uses the UKIRT 
 Wide Field Camera \citet[WFCAM][]{casali07}. The photometric system is described in 
@@ -97,15 +102,33 @@ European Coordinating Facility (ST-ECF/ESAC/ESA) and the
 Canadian Astronomy Data Centre (CADC/NRC/CSA). 
 This work is based in part on observations made with the Spitzer Space Telescope, 
 which is operated by the Jet Propulsion Laboratory, California Institute of Technology under a contract with NASA.
+This research has made use of data from HerMES project (\url{http://hermes.sussex.ac.uk/}). 
+HerMES is a Herschel Key Program utilizing Guaranteed Time from the SPIRE instrument team,
+ESAC scientists and a mission scientist.
+The HerMES data was accessed through the Herschel Database in 
+Marseille (HeDaM - \url{http://hedam.lam.fr}) operated by CeSAM and
+hosted by the Laboratoire d'Astrophysique de Marseille.
+
+Funding for the SDSS and SDSS-II has been provided by the Alfred P. Sloan Foundation, 
+the Participating Institutions, the National Science Foundation, the U.S. Department of Energy, 
+the National Aeronautics and Space Administration, the Japanese Monbukagakusho, 
+the Max Planck Society, and the Higher Education Funding Council for England. 
+The SDSS Web Site is \url{http://www.sdss.org/.}
+Funding for SDSS-III has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, 
+the National Science Foundation, and the U.S. Department of Energy Office of Science. 
+The SDSS-III web site is \url{http://www.sdss3.org/}.
+
+This research has made use of NASA's Astrophysics Data System.
 This research has made use of the NASA/ IPAC Infrared Science Archive, 
 which is operated by the Jet Propulsion Laboratory, California Institute of Technology, 
 under contract with the National Aeronautics and Space Administration.
-This research has made use of data from HerMES project (\url{http://hermes.sussex.ac.uk/}). 
-HerMES is a Herschel Key Program utilizing Guaranteed Time from the SPIRE instrument team,
- ESAC scientists and a mission scientist.
-The HerMES data was accessed through the Herschel Database in 
-Marseille (HeDaM - \url{http://hedam.lam.fr}) operated by CeSAM and
- hosted by the Laboratoire d'Astrophysique de Marseille.
+This research has made use of the NASA/IPAC Extragalactic Database (NED), 
+which is operated by the Jet Propulsion Laboratory, California Institute of Technology, 
+under contract with the National Aeronautics and Space Administration.
+This research has made use of the VizieR catalogue access tool, CDS,
+Strasbourg, France. The original description of the VizieR service was
+published in \cite{vizier}.
+
 The Institute for Gravitation and the Cosmos is 
 supported by the Eberly College of Science and the Office of the Senior Vice
 President for Research at the Pennsylvania 
