@@ -67,7 +67,6 @@ mostly in the COMOS field \citep{COSMOS}. %have a table of new counterparts? and
 We identified an optical counterpart for F15 source ID 7 originally found in the HSC and the Sloan Digital Sky Survey \citep[SDSS;][]{york2000} 
 DR12 \citep{alam15} imaging data \citep{fukugita96, gunn98, hogg01, smith02, pier03, ivezic04, gunn06, tucker06, padmanabhan08, doi10}.
 
-
 The photometry for the counterparts identified in F15 comes from a variety of multi-wavelength surveys in SXDS and A1689.
 In SXDS we use the following bands \textit{u*} (Foucaud et al., in prep.), \textit{B, V, R, i', z'} \citep{furusawa08},
 \textit{J, H, K} \citep[UKIDSS;\footnotemark][]{lawrence07} 3.6 - 24 $\mu$m \citep[SWIRE, SpUDS, SEDS;][]{lonsdale03, ashby13}
@@ -82,6 +81,10 @@ The pipeline processing and science archive are described in \citet{hambly08}.}
 
 \section{Physical Properties}
 \label{sec:analysis}
+
+We used two different software packages to model the SEDs of our galaxies, \texttt{Flexible Stellar Population Synthesis} (FSPS) \citep{conroy09, conroy10} and \texttt{Multi-wavelength Analysis of Galaxy Physical Properties} (MAGPHYS) \citep{dacunha08, dacunha15}. Both of these packages generate SEDs with inputs of physical parameters and stellar isochrones; the best-fit physical parameters and their uncertainties are found by maximizing the likelihood, using a Bayesian approach by taking priors into account when an informed prior can be found. For FSPS we used a the \texttt{emcee} Markov Chain Monte Carlo package \citep{emcee} coupled with the \texttt{python-fsps} interface to \texttt{FSPS} \citep{python-fsps}. For more detail on this, see Brooks et al. (2016). 
+
+\subsection{FSPS Analysis}
 
 
 
