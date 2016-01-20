@@ -2,7 +2,7 @@
 \usepackage{url}
 \usepackage{amsmath}
 \usepackage{afterpage}
-\slugcomment{\apj, submitted}
+\slugcomment{To be submitted to \apj\ or \mnras}
 \shorttitle{Physically Properties of Serendipitous sub-mm Galaxies}
 \shortauthors{Hagen et al.}
 \newcommand{\eg}{e.g.}
@@ -82,9 +82,13 @@ The pipeline processing and science archive are described in \citet{hambly08}.}
 \section{Physical Properties}
 \label{sec:analysis}
 
-We used two different software packages to model the SEDs of our galaxies, \texttt{Flexible Stellar Population Synthesis} (FSPS) \citep{conroy09, conroy10} and \texttt{Multi-wavelength Analysis of Galaxy Physical Properties} (MAGPHYS) \citep{dacunha08, dacunha15}. Both of these packages generate SEDs with inputs of physical parameters and stellar isochrones; the best-fit physical parameters and their uncertainties are found by maximizing the likelihood, using a Bayesian approach by taking priors into account when an informed prior can be found. For FSPS we used a the \texttt{emcee} Markov Chain Monte Carlo package \citep{emcee} coupled with the \texttt{python-fsps} interface to \texttt{FSPS} \citep{python-fsps}. For more detail on this, see Brooks et al. (2016). 
+%talk about how important it is to have consistency in whole fit -- energy extinguished from dust heats dust, so there's energy balance
 
-\subsection{FSPS Analysis}
+We used two different software packages to model the SEDs of our galaxies, \texttt{Multi-wavelength Analysis of Galaxy Physical Properties} (MAGPHYS) \citep{dacunha08, dacunha15} and \texttt{Flexible Stellar Population Synthesis} (FSPS) \citep{conroy09, conroy10}. Both of these packages generate SEDs with inputs of physical parameters and stellar isochrones; the best-fit physical parameters and their uncertainties are found by maximizing the likelihood, using a Bayesian approach by taking priors into account when an informed prior can be found. MAGPHYS builds up the marginalized likelihood for each parameter by comparing the data to all combinations of models in a grid search. For FSPS we used a the \texttt{emcee} Markov Chain Monte Carlo package \citep{emcee} coupled with the \texttt{python-fsps} interface to \texttt{FSPS} \citep{python-fsps}. For more detail on the software setup for FSPS, see Brooks et al. (2016). 
+
+In our use of \texttt{FSPS}, we found that the outputs could not be used for further analysis, as we hit an edge in the parameter distribution for the strength of the radiation field. The dust emission models used in \texttt{FSPS}, from \cite{draine07}, allow the strength of the radiation field go to 25 times the Milky Way level. The output distributions for all galaxies consistently hit the edge of this prior, meaning that our results our biased as there are well-fitting models that lie outside the range of the \texttt{FSPS} software. While we do not use the physical parameter outputs, there is still a lesson to be learned here -- the radiation field intensities in these galaxies are very high compared to the Milky Way. This is consistent with their compact nature and star formation rates. We also hope that this finding provides motivation to increase the parameter range in the dust emission models in \texttt{FSPS}.
+
+\subsection{MAGPHYS Analysis}
 
 
 
