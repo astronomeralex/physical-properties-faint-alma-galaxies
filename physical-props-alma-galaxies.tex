@@ -1,6 +1,7 @@
 \documentclass[preprint,natbib209]{aastex}
 \usepackage{url}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{afterpage}
 \slugcomment{To be submitted to \apj\ or \mnras}
 \shorttitle{Physically Properties of Serendipitous sub-mm Galaxies}
@@ -44,6 +45,12 @@ University, 525 Davey Lab, University Park, PA 16802}
 \section{Introduction}
 \label{sec:intro}
 
+Traditional sub-millimeter galaxies sample galaxies sample very dusty, highly star forming galaxies at high redshift \citep[e.g.][and references therein]{blain02, lagache05, casey14, lutz14}. These galaxies, as referred to as dusty star-forming galaxies (DSFG) to reference their physical properties instead of a possible detection technique, are some of the most intensely star forming galaxies in the known universe. Their discovery across redshifts is due to the Rayleigh-Jeans tail of the dust blackbody curve almost perfectly cancelling out cosmological dimming from $1 \lesssim z \lesssim 8$ in the wavelength range of $850\text{$\mu$m} \lesssim \lambda \lesssim 2\text{mm}$ \citep[See][Figure 3]{casey14}; this is referred to as the ``negative K correction."
+
+Traditionally, SMGs were found with single-dish telescopes, which limited the resolution and thus made follow-up difficult. The addition Atacama Large Millimeter Array has given sub arcsecond resolution at sub-millimeter wavelengths, allowing for unprecedented studies of SMGs. The ALMA LABOCA ECDFS Submillimeter \citep[ALESS;][]{hodge13} used ALMA to study SMGs selected in the Extended Chandra Deep Field South. \cite{dacunha15} showed that these ALESS SMGs have a wide range of physical properties, including some that have significantly less dust attenuation than expected; furthermore, half of these galaxies are above the stellar mass -- star formation rate relation, while the other half match the relation. This shows that SMGs are not just star-bursting galaxies, but cover a wide range of properties.
+
+%talk about seiji's paper a bit here -- from targeted to seredipitous galaxies to understand whole population of galaxies with sub-mm emission
+
 This bias of these galaxies was significantly lower than that of traditional SMG and pBzK galaxies, 
 and similar to those of sBzKs, LBGs, and LAEs. 
 
@@ -53,7 +60,7 @@ and $\Omega_k = 0$ \citep{planck13}.
 \section{Sample Selection} 
 \label{sec:sample}
 
-Our sample comes from \citet{fujimoto15}, hereafter F15, who studied serendipitously discovered sub-mm galaxies in 
+Our sample comes from \citet{fujimoto16}, hereafter F16, who studied serendipitously discovered sub-mm galaxies in 
 120 deep ALMA pointings pulled from the ALMA archive. This work achieved depths of 0.05 mJy at 1.2mm in the field and 0.02 mJy 
 with the assistance of gravitational lensing in A1689; it discovered a total of 133 galaxies. Many of the ALMA observations in F15 were not
 in deep fields with ancillary photometry sufficient to identify counterparts. Thus, F15 focused on identifying counterparts in Subaru XMM-Newton Deep 
@@ -86,7 +93,7 @@ The pipeline processing and science archive are described in \citet{hambly08}.}
 
 We used two different software packages to model the SEDs of our galaxies, \texttt{Multi-wavelength Analysis of Galaxy Physical Properties} (MAGPHYS) \citep{dacunha08, dacunha15} and \texttt{Flexible Stellar Population Synthesis} (FSPS) \citep{conroy09, conroy10}. Both of these packages generate SEDs with inputs of physical parameters and stellar isochrones; the best-fit physical parameters and their uncertainties are found by maximizing the likelihood, using a Bayesian approach by taking priors into account when an informed prior can be found. MAGPHYS builds up the marginalized likelihood for each parameter by comparing the data to all combinations of models in a grid search. For FSPS we used a the \texttt{emcee} Markov Chain Monte Carlo package \citep{emcee} coupled with the \texttt{python-fsps} interface to \texttt{FSPS} \citep{python-fsps}. For more detail on the software setup for FSPS, see Brooks et al. (2016). 
 
-In our use of \texttt{FSPS}, we found that the outputs could not be used for further analysis, as we hit an edge in the parameter distribution for the strength of the radiation field. The dust emission models used in \texttt{FSPS}, from \cite{draine07}, allow the strength of the radiation field go to 25 times the Milky Way level. The output distributions for all galaxies consistently hit the edge of this prior, meaning that our results our biased as there are well-fitting models that lie outside the range of the \texttt{FSPS} software. While we do not use the physical parameter outputs, there is still a lesson to be learned here -- the radiation field intensities in these galaxies are very high compared to the Milky Way. This is consistent with their compact nature and star formation rates. We also hope that this finding provides motivation to increase the parameter range in the dust emission models in \texttt{FSPS}.
+In our use of \texttt{FSPS}, we found that the outputs could not be used for further analysis, as we hit an edge in the parameter distribution for the strength of the radiation field. The dust emission models used in \texttt{FSPS}, from \cite{draine07}, allow the strength of the radiation field go to twenty-five times the Milky Way level. The output distributions for all galaxies consistently hit the edge of this prior, meaning that our results our biased as there are well-fitting models that lie outside the range of the \texttt{FSPS} software. While we do not use the physical parameter outputs, there is still a lesson to be learned here -- the radiation field intensities in these galaxies are very high compared to the Milky Way. This is consistent with their compact nature and star formation rates. We also hope that this finding provides motivation to increase the parameter range in the dust emission models in \texttt{FSPS}.
 
 \subsection{MAGPHYS Analysis}
 
@@ -94,6 +101,14 @@ In our use of \texttt{FSPS}, we found that the outputs could not be used for fur
 
 \section{Results}
 \label{sec:discussion}
+
+
+
+\subsection{Comparison to ALESS Galaxies}
+
+
+
+\subsection{Objects of Particular Interest}
 
 
 
