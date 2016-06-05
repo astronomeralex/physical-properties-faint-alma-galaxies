@@ -49,10 +49,9 @@ Traditional sub-millimeter galaxies sample galaxies sample very dusty, highly st
 
 Traditionally, SMGs were found with single-dish telescopes, which limited the resolution and thus made follow-up difficult. The addition Atacama Large Millimeter Array has given sub arcsecond resolution at sub-millimeter wavelengths, allowing for unprecedented studies of SMGs. The ALMA LABOCA ECDFS Submillimeter \citep[ALESS;][]{hodge13} used ALMA to study SMGs selected in the Extended Chandra Deep Field South. \cite{dacunha15} showed that these ALESS SMGs have a wide range of physical properties, including some that have significantly less dust attenuation than expected; furthermore, half of these galaxies are above the stellar mass -- star formation rate relation, while the other half match the relation. This shows that SMGs are not just star-bursting galaxies, but cover a wide range of properties.
 
-%talk about seiji's paper a bit here -- from targeted to seredipitous galaxies to understand whole population of galaxies with sub-mm emission
-
-This bias of these galaxies was significantly lower than that of traditional SMG and pBzK galaxies, 
-and similar to those of sBzKs, LBGs, and LAEs. 
+This paper focuses on galaxies first discussed in \cite{fujimoto16} serendipitously selected via deep 1.2mm archival ALMA observations. 
+Studying these serendipitous sub-mm selected galaxies is important to understand the whole population of galaxies with sub-mm emission.
+While classical SMGs are rare and in highly biased regions, F16 found that the bias of these galaxies was significantly lower than that of traditional SMG and pBzK galaxies, and similar to those of sBzKs, LBGs, and LAEs. This study is then one of the first opportunities to understand the physical properties of these galaxies. By understanding this we can further understand the sub-mm emission for less biased, more commonly found sub-mm galaxies, and improve our understanding of the physical properties of these galaxies.
 
 We adopt the standard concordance cosmology of $h = 0.7$, $\Omega_m = 0.3$, $\Omega_\Lambda = 0.7$, 
 and $\Omega_k = 0$ \citep{planck13}.
@@ -63,7 +62,7 @@ and $\Omega_k = 0$ \citep{planck13}.
 Our sample comes from \citet{fujimoto16}, hereafter F16, who studied serendipitously discovered sub-mm galaxies in 
 120 deep ALMA pointings pulled from the ALMA archive. This work achieved depths of 0.05 mJy at 1.2mm in the field and 0.02 mJy 
 with the assistance of gravitational lensing in A1689; it discovered a total of 133 galaxies. Many of the ALMA observations in F15 were not
-in deep fields with ancillary photometry sufficient to identify counterparts. Thus, F15 focused on identifying counterparts in Subaru XMM-Newton Deep 
+in deep fields with ancillary photometry sufficient to identify counterparts. Thus, F16 focused on identifying counterparts in Subaru XMM-Newton Deep 
 Survey \citep[SXDS;][]{furusawa08} and Abel 1689 (A1689), both of which are covered by multi-wavelength surveys. 
 Out of 65 serendipitous ALMA sources, F15 identified 17 counterparts -- 2 in A1689 and 15 in SXDS. 
 
@@ -90,14 +89,15 @@ The pipeline processing and science archive are described in \citet{hambly08}.}
 \label{sec:analysis}
 
 %talk about how important it is to have consistency in whole fit -- energy extinguished from dust heats dust, so there's energy balance
+We use spectral energy distribution fitting (SED fitting) to infer physical properties of our sample of galaxies \citep[for a recent review of SED fitting see][]{conroy13}. It is of great importance to have energy balance in our SED fitting; the energy of the starlight attenuated by dust is reprocessed and emitted in the infrared. It is normally quite difficult to measure the dust emission, particularly in low-mass galaxies, and our sample of galaxies are selected in such a way that its possible to do this.
 
-We used two different software packages to model the SEDs of our galaxies, \texttt{Multi-wavelength Analysis of Galaxy Physical Properties} (MAGPHYS) \citep{dacunha08, dacunha15} and \texttt{Flexible Stellar Population Synthesis} (FSPS) \citep{conroy09, conroy10}. Both of these packages generate SEDs with inputs of physical parameters and stellar isochrones; the best-fit physical parameters and their uncertainties are found by maximizing the likelihood, using a Bayesian approach by taking priors into account when an informed prior can be found. MAGPHYS builds up the marginalized likelihood for each parameter by comparing the data to all combinations of models in a grid search. For FSPS we used a the \texttt{emcee} Markov Chain Monte Carlo package \citep{emcee} coupled with the \texttt{python-fsps} interface to \texttt{FSPS} \citep{python-fsps}. For more detail on the software setup for FSPS, see Brooks et al. (2016). 
+We used two different software packages to model the SEDs of our galaxies, \texttt{Multi-wavelength Analysis of Galaxy Physical Properties} (MAGPHYS) \citep{dacunha08, dacunha15} and \texttt{Flexible Stellar Population Synthesis} (FSPS) \citep{conroy09, conroy10}. Both of these packages generate SEDs with inputs of physical parameters and stellar isochrones; the best-fit physical parameters and their uncertainties are found by maximizing the likelihood, using a Bayesian approach by taking priors into account when an informed prior can be found. MAGPHYS builds up the marginalized likelihood for each parameter by comparing the data to all combinations of models in a grid search. For FSPS we used a the \texttt{emcee} Markov Chain Monte Carlo package \citep{emcee} coupled with the \texttt{python-fsps} interface to \texttt{FSPS} \citep{python-fsps}. For more detail on the software setup for FSPS, see Hagen et al. (2016b, in prep). 
 
 In our use of \texttt{FSPS}, we found that the outputs could not be used for further analysis, as we hit an edge in the parameter distribution for the strength of the radiation field. The dust emission models used in \texttt{FSPS}, from \cite{draine07}, allow the strength of the radiation field go to twenty-five times the Milky Way level. The output distributions for all galaxies consistently hit the edge of this prior, meaning that our results our biased as there are well-fitting models that lie outside the range of the \texttt{FSPS} software. While we do not use the physical parameter outputs, there is still a lesson to be learned here -- the radiation field intensities in these galaxies are very high compared to the Milky Way. This is consistent with their compact nature and star formation rates. We also hope that this finding provides motivation to increase the parameter range in the dust emission models in \texttt{FSPS}.
 
 \subsection{MAGPHYS Analysis}
 
-
+We use \texttt{Magphys} for SED fitting for the rest of this paper. In particular, we use the version of \texttt{Magphys} for high-z galaxies, as described by \cite{dacunha15}. \texttt{Magphys} uses the \cite{bruzual07} updated versions of the \cite{bruzual03} stellar population synthesis models. Dust attenuation is computed using the two component model of \cite{charlot00}; this model applies an additional ``birth-cloud" opacity for stars younger than $10^7$ years. The shape of the dust law is a power law. %what is different in da cunha 15?
 
 \section{Results}
 \label{sec:discussion}
