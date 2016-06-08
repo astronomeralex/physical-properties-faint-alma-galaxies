@@ -10,7 +10,7 @@
 \citestyle{apj}
 \begin{document}
 
-\title{Heterogeneous Physical Properties of Serendipitously Discovered Galaxies with ALMA: 
+\title{Heterogeneous Physical Properties of Serendipitously Discovered Galaxies: 
 Low-mass sub-millimeter galaxies and others at $0.6 < z < 3$}
 
 \author{Alex Hagen\altaffilmark{1,2,3}}
@@ -64,16 +64,16 @@ Our sample comes from \citet{fujimoto16}, hereafter F16, who studied serendipito
 with the assistance of gravitational lensing in A1689; it discovered a total of 133 galaxies. Many of the ALMA observations in F15 were not
 in deep fields with ancillary photometry sufficient to identify counterparts. Thus, F16 focused on identifying counterparts in Subaru XMM-Newton Deep 
 Survey \citep[SXDS;][]{furusawa08} and Abel 1689 (A1689), both of which are covered by multi-wavelength surveys. 
-Out of 65 serendipitous ALMA sources, F15 identified 17 counterparts -- 2 in A1689 and 15 in SXDS. 
+Out of 65 serendipitous ALMA sources, F16 identified 17 counterparts -- 2 in A1689 and 15 in SXDS. 
 
-% add in cosmos counterparts
-To ensure were were not missing any counterparts, we searched for counterparts for each galaxy in The NASA Extragalactic Data (NED), and
-the \textit{Hubble} Source Catalog (HSC; Whitmore et al., in prep). This led us to discover YY new optical counterparts, 
-mostly in the COMOS field \citep{COSMOS}. %have a table of new counterparts? and maybe a table of photometry?
-We identified an optical counterpart for F15 source ID 7 originally found in the HSC and the Sloan Digital Sky Survey \citep[SDSS;][]{york2000} 
+%% add in cosmos counterparts
+%To ensure were were not missing any counterparts, we searched for counterparts for each galaxy in The NASA Extragalactic Data (NED), and
+%the \textit{Hubble} Source Catalog (HSC; Whitmore et al., in prep). This led us to discover YY new optical counterparts, 
+%mostly in the COMOS field \citep{COSMOS}. %have a table of new counterparts? and maybe a table of photometry?
+We identified an optical counterpart for F16 source ID 7 originally found in the HSC and the Sloan Digital Sky Survey \citep[SDSS;][]{york2000} 
 DR12 \citep{alam15} imaging data \citep{fukugita96, gunn98, hogg01, smith02, pier03, ivezic04, gunn06, tucker06, padmanabhan08, doi10}.
 
-The photometry for the counterparts identified in F15 comes from a variety of multi-wavelength surveys in SXDS and A1689.
+The photometry for the counterparts identified in F16 comes from a variety of multi-wavelength surveys in SXDS and A1689.
 In SXDS we use the following bands \textit{u*} (Foucaud et al., in prep.), \textit{B, V, R, i', z'} \citep{furusawa08},
 \textit{J, H, K} \citep[UKIDSS;\footnotemark][]{lawrence07} 3.6 - 24 $\mu$m \citep[SWIRE, SpUDS, SEDS;][]{lonsdale03, ashby13}
 250 - 500 $\mu$m \citep[HerMES;][]{oliver12, smith12, wang14} and 1.4 GHz \citep{simpson06}.
@@ -85,12 +85,13 @@ Wide Field Camera \citet[WFCAM][]{casali07}. The photometric system is described
 \citet{hewett06}, and the calibration is described in \citet{hodgkin09}. 
 The pipeline processing and science archive are described in \citet{hambly08}.}
 
-\section{Physical Properties}
+\section{Analysis}
 \label{sec:analysis}
 
 %talk about how important it is to have consistency in whole fit -- energy extinguished from dust heats dust, so there's energy balance
 We use spectral energy distribution fitting (SED fitting) to infer physical properties of our sample of galaxies \citep[for a recent review of SED fitting see][]{conroy13}. It is of great importance to have energy balance in our SED fitting; the energy of the starlight attenuated by dust is reprocessed and emitted in the infrared. It is normally quite difficult to measure the dust emission, particularly in low-mass galaxies, and our sample of galaxies are selected in such a way that its possible to do this. Balancing the dust emission with the dust absorption allows for the degeneracy between age and dust attenuation, common in SED fitting that only doesn't include mid- and far-IR, to be broken. This allows for a better estimation of the star formation history as well.
 
+\subsection{Software Choice}
 We used two different software packages to model the SEDs of our galaxies, \texttt{Multi-wavelength Analysis of Galaxy Physical Properties} (MAGPHYS) \citep{dacunha08, dacunha15} and \texttt{Flexible Stellar Population Synthesis} (FSPS) \citep{conroy09, conroy10}. Both of these packages generate SEDs with inputs of physical parameters and stellar isochrones; the best-fit physical parameters and their uncertainties are found by maximizing the likelihood, using a Bayesian approach by taking priors into account when an informed prior can be found. MAGPHYS builds up the marginalized likelihood for each parameter by comparing the data to all combinations of models in a grid search. For FSPS we used a the \texttt{emcee} Markov Chain Monte Carlo package \citep{emcee} coupled with the \texttt{python-fsps} interface to \texttt{FSPS} \citep{python-fsps}. For more detail on the python wrapper software for FSPS, see Hagen et al. (2016b, in prep). 
 
 In our use of \texttt{FSPS}, we found that the outputs could not be used for further analysis, as we hit an edge in the parameter distribution for the strength of the radiation field. The dust emission models used in \texttt{FSPS}, from \cite{draine07}, allow the strength of the radiation field go to twenty-five times the Milky Way level. The output distributions for all galaxies consistently hit the edge of this range, meaning that our results our biased as there are well-fitting models that lie outside the range of the \texttt{FSPS} software. While we do not use the physical parameter outputs, there is still a lesson to be learned here -- the radiation field intensities in these galaxies are very high compared to the Milky Way. This is consistent with their compact nature and star formation rates. We also hope that this finding provides motivation to increase the parameter range in the dust emission models in \texttt{FSPS}.
@@ -108,23 +109,117 @@ The dust emission is modeling using four components: empirical templates for pol
 
 The actual SED fitting in \texttt{Magphys} is done by generating model spectra at the redshift of the galaxy in question. These are convolved with filters and compared to the observed data. The log likelihood of a particular model is $-\chi^2 / 2$ (under assumptions of Gaussian uncertainties), and the likelihoods of each parameter are built up through comparison of all the generated models. We note that the Bayesian nature of this code returns the distributions, not just best-fit values, for each model parameter. This is incredibly important, as degeneracies in SED fitting, particularly with large numbers of parameters, are quite common. Being able to explore the distribution enables us to understand how constrained each particular parameter is.
 
+\subsection{Photometric Redshifts}
+
+Only one galaxy, F16's A1, had a spectroscopic redshift. For all others, photometric redshifts were found using \cite{eazy}.
+
 \section{Results}
-\label{sec:discussion}
+\label{sec:results}
+
+The SED fitting results are shown in Table \ref{table:sed}. Figure \ref{fig:allsed} compares the best-fit SED for each galaxy in our sample. This cleanly demonstrates the main point of our work -- serendipitously selected sub-mm galaxies cover a wide range of physical properties. While some follow a scaled down SED of a traditional SMG, others are optically bright and look like continuum selected star forming galaxies. These serendipitous sources allow us to include far-IR and radio observations into sources that have never been studied in this way. 
+
+%%%%results table here with same columns as da cunha 15?
+\begin{deluxetable}{ccccccc}
+\tabletypesize{\footnotesize}
+\tablewidth{0pt}
+\tablecaption{SED Fitting Results \label{table:sed}}
+\tablehead{
+\colhead{Galaxy ID} & \colhead{Redshift} & \colhead{Log Stellar Mass} & \colhead{Log SFR} & \colhead{$A_V$} & \colhead{$T_{Dust}$} & \colhead{Log Dust Mass} }
+\startdata
+A1 & 2.60 & $9.25_{-0.09}^{+0.115}$ & $1.20_{-0.04} ^{+0.07}$ & $2.31_{-0.1} ^{+0.05}$& $49_{-5}^{+5}$ &  $7.33_{-0.10} ^{0.10}$   \\
+F7 & 0.677 & $9.97_{-0.23} ^{+0.24}$ & $1.12_{-0.26} ^{+0.30}$ &$0.64_{-0.33} ^{+0.48}$ & $47_{-10}^{+11}$&   $7.07_{-0.36} ^{0.26}$     \\
+S5 & 2.939 & $9.41_{-0.01} ^{+0.02}$ & $1.20_{-0.01} ^{+0.1}$ &$0.24_{-0.01} ^{+0.18}$ &$41_{-6}^{+13}$ &     $7.35_{-0.26} ^{0.22}$       \\
+S3 & 2.328 &  $9.877_{-0.07} ^{+0.01}$ & $1.73_{-0.01} ^{+0.1}$ &$1.79_{-0.01} ^{+0.01}$ &$64_{-3}^{+6}$ &    $7.06_{-0.07} ^{0.12}$       \\
+S11 & 1.876 &  $11.73_{-0.01} ^{+0.01}$ & $2.30_{-0.01} ^{+0.01}$ &$2.06_{-0.01} ^{+0.01}$ & $64_{-3}^{+1}$&      $7.78_{-0.01} ^{0.13}$      \\
+S7 & 1.589 &  $8.00_{-0.01} ^{+0.01}$  & $-0.44_{-0.1} ^{+0.15}$ &$0.24_{-0.1} ^{+0.15}$ & $49_{-12}^{+14}$&     $6.00_{-0.01} ^{0.01}$            \\
+S1 & 1.377 &  $11.18_{-0.01} ^{+0.01}$  & $1.18_{-0.01} ^{+0.01}$ &$0.56_{-0.01} ^{+0.01}$ & $36_{-7}^{+8}$&       $8.28_{-0.22} ^{0.12}$        \\
+S2 & 1.955 & $8.39_{-0.01} ^{+0.32}$  & $-0.12_{-0.01} ^{+0.01}$ &$0.01_{-0.01} ^{+0.01}$ & $50_{-12}^{+14}$&    $6.00_{-0.01} ^{0.01}$           \\
+S9 & 0.665 &  $10.74_{-0.1} ^{+0.01}$ & $-1.25_{-0.01} ^{+0.04}$ &$0.11_{-0.03} ^{+0.01}$ & $34_{-6}^{+6}$&     $6.00_{-0.01} ^{0.47}$           \\
+S4 & 1.569 & $10.47_{-0.01} ^{+0.09}$ & $0.43_{-0.01} ^{+0.14}$ &$0.46_{-0.08} ^{+0.08}$ &$33_{-4}^{+7}$ &     $7.52_{-0.31} ^{0.20}$          \\
+S10 & 0.82 & $9.03_{-0.06} ^{+0.06}$  & $0.07_{-0.45} ^{+0.01}$ &$1.29_{-0.53} ^{+0.01}$ &$44_{-9}^{+12}$ &    $6.19_{-0.19} ^{0.65}$           \\
+S12 & 1.561 &  $11.55_{-0.01} ^{+0.01}$  & $1.94_{-0.01} ^{+0.01}$ &$0.99_{-0.01} ^{+0.01}$ & $55_{-13}^{+4}$&    $8.08_{-0.74} ^{0.15}$          \\
+S6 & 0.442 &   $10.87_{-0.01} ^{+0.01}$  & $0.41_{-0.01} ^{+0.01}$ &$1.84_{-0.01} ^{+0.01}$ &$40_{-3}^{+1}$ &   $6.57_{-0.11} ^{0.21}$             \\
+\enddata
+\tablecomments{All uncertainties shown are the 16th and 84th percentiles of the distribution. The IDs are from F16. The redshifts are all photometric redshifts, except A1, which is spectroscopic. The units of stellar mass and dust mass are log solar masses. Star formation rate is in units of log solar masses per year. $A_V$ is measured in magnitudes, and $T_{Dust}$ is measured in Kelvin.}
+\end{deluxetable}
 
 
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.8]{all_sed.pdf}
+\caption{Normalized log $f_\nu$ for the best fit SED for each object. These galaxies how a large variety of physical properties inferred from their SEDs. Some galaxies are bright in the UV/optical and some are very extinguished. Some galaxies have bright PAH emission features while some are very faint. The large range of dust temperatures can be seen in the shifts of the peak of the cold dust emission spectrum. These serendipitously selected sub-mm galaxies have a large variety of SEDs, as opposed to traditional SMGs. This demonstrates that this galaxy selection technique is a way to probe dust conditions across a wide variety of galaxies.}
+\label{fig:allsed}
+\end{figure}
 
-\subsection{Comparison to ALESS Galaxies}
+\subsection{Comparison Samples}
+To put these galaxies in context, we have selected two different comparison samples to appear in plots of physical properties as allows. The first is the ALESS sample of \cite{dacunha15}. This sample is made of traditionally selected sub-mm galaxies, although the results from this paper also show a broader range of physical properties than was expected. This sample allows us to compare our galaxies to other sub-mm selected galaxies.
+The second sample is the $1.9 < z < 2.35$ optical emission line selected sample from \cite{zeimann14}. We refer to these galaxies as optical emission line galaxies (oELGs). This sample was selected for strong emission lines in 3DHST grism observations. We chose this sample as it also selected star forming galaxies, but with low reddenings. It also extends to much fainter masses than the released 3DHST catalogs, which is useful as we also have very low mass galaxies. 
 
+Perhaps include Kurczynski et al. 2016 for a continuum selected sample?
 
+These two samples bracket our sample -- one is dust poor, the other dust rich, one is massive, and the other extends to low mass. With this we can put our sub-mm selected galaxies in context, instead of engaging in galaxy ``stamp collecting."
 
-\subsection{Objects of Particular Interest}
+\subsection{Physical Property Results}
 
+Figure \ref{fig:mass_comp} shows the stellar mass comparison between our sample and the two comparison samples. Our sample covers 4+ dex in stellar mass and is bracketed by the ALESS sample and oELG sample. Some of these galaxies fit in the ALESS stellar mass range and others have similar masses to the oELGs. This large stellar mass range also implies that this selection is samples across a wide range of dark matter halo masses as well. 
+
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.8]{ecdf_mass.pdf}
+\caption{Stellar mass comparison between our serendipitously selected sub-mm galaxies and our two comparison samples. We see that our sample is bracketed by the comparison sample. Our galaxies cover a very wide range of $4+$ dex in stellar mass. Some are very massive in line with the ALESS sample, while others more than one dex less massive than any ALESS galaxy are far more similar to the low mass oELG sample.}
+\label{fig:mass_comp}
+\end{figure}
+
+Figure \ref{fig:sfr_comp} shows star formation rate comparison between our galaxy sample and the comparison samples. This plot shows that some of our galaxies have extremely low star formation rates and would be more in line with passive galaxies (F16 did note that a few of these galaxies fall in the passive BzK (pBzK) color-color range.) These passive galaxies were unexpected -- all other sub-mm selected galaxies are star-forming galaxies -- and this is the first time passive galaxies have been selected in the sub-mm at high redshift. 
+
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.8]{ecdf_sfr.pdf}
+\caption{Star formation rate comparison between our sample and the two comparison samples. We note that our sample extends to even lower star formation rates than either of our comparison samples. As both comparison samples are selected to be star forming galaxies, this suggest that some of our sources are almost passive galaxies.}
+\label{fig:sfr_comp}
+\end{figure}
+
+Comparison of the dust attenuation, dust to stellar mass ratio, and the dust temperature are found in Figures \ref{fig:av_comp}, \ref{fig:mstar_mdust}, \& \ref{fig:tdust}, respectively. The attenuation comparison again demonstrates how some physical properties of our sample are bracketed between the oELG and ALESS samples. Our galaxies have slightly more dust than the oELGs, with a median $A_V = 1$, but they don't go to the very high $A_V$ of 5 or more as seen in the tail of the ALESS sample. In the comparison of the dust mass to stellar mass ratio in Figure \ref{fig:mstar_mdust}, we see that our serendipitously selected galaxies extend to one dex lower dust to stellar mass ratios than the ALESS sample. Others in our sample match the ALESS sample quite well in this respect, though, again showing the diversity and range of physical properties of this sample. The dust temperature comparison in Figure \ref{fig:tdust} shows that the dust temperature of both our sample and the ALESS samples have approximately the same range. However, our sample has a much different distribution, although this could easily be due to small number statistics.
+
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.8]{ecdf_av.pdf}
+\caption{$A_V$ comparison between our sample and the two comparison samples. As with Figure \ref{fig:mass_comp}, our sample is bracketed between the two comparison samples. The dust attenuation properties of our sample range from high $A_V$ to very low $A_V$, again demonstrating the large variety of physical properties found in our galaxy sample.}
+\label{fig:av_comp}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.8]{ecdf_mdust_mstar.pdf}
+\caption{Dust to stellar mass comparison between our sample and the ALESS sample. As in the comparison of $A_V$, Figure \ref{fig:av_comp}, our galaxies can be significantly more dust poor than ALESS galaxies.}
+\label{fig:mstar_mdust}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.8]{ecdf_tdust.pdf}
+\caption{Dust temperature comparison between our sample and the ALESS sample. The ranges of both galaxy samples are approximately the same, though there is a possible multimodality of our serendipitous sample; a larger sample would be needed to explore this more concretely.}
+\label{fig:tdust}
+\end{figure}
+
+\subsection{Stellar Mass--Star Formation Rate Relation}
+
+Figure \ref{fig:mainseq} shows our sample and the comparison samples on the stellar mass --- star formation rate relation. Our sample follows the oELG sample well, but drops off at high masses. The low star formation rate galaxies at high mass could be undergoing quenching, where the warm dust from older star formation is still emitting in the FIR, but there is no recent star formation. (will include sample from Kurczynski et al. 2016 for comparison once i get it)
+
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.8]{main_seq.pdf}
+\caption{Stellar mass -- star formation rate relation. We see that our galaxies track the oELGs well, but fall off the relation at high mass. This could demonstrate that some of these galaxies are evolving into passive galaxies.}
+\label{fig:mainseq}
+\end{figure}
+
+%\subsection{Object of Particular Interest: A1}
 
 
 \section{Conclusion}
 \label{sec:conclusion}
 
-
+This work demonstrates that selecting serendipitous sub-mm sources results in galaxies with a wide range of physical properties. They are not simple scaled versions of SMGs. This large range selected across star forming and passive (or quenching?) galaxies and across a large range of attenuations and dust properties. As ALMA continues to provide new deep imaging in fields covered with \textit{HST} and other telescopes, studying the serendipitously discovered ALMA source provides for a way to probe across a wide range of physical properties. While this sample is limited in its size, future ALMA observations should provide hundreds of these galaxies in fields with ancillary photometry.
 
 \acknowledgments
 \section*{Acknowledgments}
@@ -155,12 +250,12 @@ This research has made use of NASA's Astrophysics Data System.
 This research has made use of the NASA/ IPAC Infrared Science Archive, 
 which is operated by the Jet Propulsion Laboratory, California Institute of Technology, 
 under contract with the National Aeronautics and Space Administration.
-This research has made use of the NASA/IPAC Extragalactic Database (NED), 
-which is operated by the Jet Propulsion Laboratory, California Institute of Technology, 
-under contract with the National Aeronautics and Space Administration.
-This research has made use of the VizieR catalogue access tool, CDS,
-Strasbourg, France. The original description of the VizieR service was
-published in \cite{vizier}.
+%This research has made use of the NASA/IPAC Extragalactic Database (NED), 
+%which is operated by the Jet Propulsion Laboratory, California Institute of Technology, 
+%under contract with the National Aeronautics and Space Administration.
+%This research has made use of the VizieR catalogue access tool, CDS,
+%Strasbourg, France. The original description of the VizieR service was
+%published in \cite{vizier}.
 
 The Institute for Gravitation and the Cosmos is 
 supported by the Eberly College of Science and the Office of the Senior Vice
