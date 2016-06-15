@@ -64,7 +64,7 @@ Our sample comes from \citet{fujimoto16}, hereafter F16, who studied serendipito
 with the assistance of gravitational lensing in A1689; it discovered a total of 133 galaxies. Many of the ALMA observations in F15 were not
 in deep fields with ancillary photometry sufficient to identify counterparts. Thus, F16 focused on identifying counterparts in Subaru XMM-Newton Deep 
 Survey \citep[SXDS;][]{furusawa08} and Abel 1689 (A1689), both of which are covered by multi-wavelength surveys. 
-Out of 65 serendipitous ALMA sources, F16 identified 17 counterparts -- 2 in A1689 and 15 in SXDS. 
+Out of 65 serendipitous ALMA sources, F16 identified 17 counterparts -- 2 in A1689 and 15 in SXDS. Of these, 12 have enough counterpart photometry to accurately find a photometric redshift so SED fitting can be done.
 
 %% add in cosmos counterparts
 %To ensure were were not missing any counterparts, we searched for counterparts for each galaxy in The NASA Extragalactic Data (NED), and
@@ -140,7 +140,7 @@ S10 & 0.82 & $9.03_{-0.06} ^{+0.06}$  & $0.07_{-0.45} ^{+0.01}$ &$1.29_{-0.53} ^
 S12 & 1.561 &  $11.55_{-0.01} ^{+0.01}$  & $1.94_{-0.01} ^{+0.01}$ &$0.99_{-0.01} ^{+0.01}$ & $55_{-13}^{+4}$&    $8.08_{-0.74} ^{0.15}$          \\
 S6 & 0.442 &   $10.87_{-0.01} ^{+0.01}$  & $0.41_{-0.01} ^{+0.01}$ &$1.84_{-0.01} ^{+0.01}$ &$40_{-3}^{+1}$ &   $6.57_{-0.11} ^{0.21}$             \\
 \enddata
-\tablecomments{All uncertainties shown are the 16th and 84th percentiles of the distribution. The IDs are from F16. The redshifts are all photometric redshifts, except A1, which is spectroscopic. The units of stellar mass and dust mass are log solar masses. Star formation rate is in units of log solar masses per year. $A_V$ is measured in magnitudes, and $T_{Dust}$ is measured in Kelvin.}
+\tablecomments{All uncertainties shown are the 16th and 84th percentiles of the distribution. The IDs are from F16. The redshifts are all photometric redshifts, except A1, which is spectroscopic. The units of stellar mass and dust mass are log solar masses. Star formation rate is in units of log solar masses per year. $A_V$ is measured in magnitudes, and $T_{Dust}$ is measured in Kelvin. Note that $T_{Dust}$ is the luminosity weighted dust temperature (see equation 8 of \cite{dacunha15}), and not the cold dust temperature. The best fit cold dust temperature for all our galaxies is $\sim 25$K.}
 \end{deluxetable}
 
 
@@ -179,7 +179,7 @@ Figure \ref{fig:sfr_comp} shows star formation rate comparison between our galax
 \label{fig:sfr_comp}
 \end{figure}
 
-Comparison of the dust attenuation, dust to stellar mass ratio, and the dust temperature are found in Figures \ref{fig:av_comp}, \ref{fig:mstar_mdust}, \& \ref{fig:tdust}, respectively. The attenuation comparison again demonstrates how some physical properties of our sample are bracketed between the oELG and ALESS samples. Our galaxies have slightly more dust than the oELGs, with a median $A_V = 1$, but they don't go to the very high $A_V$ of 5 or more as seen in the tail of the ALESS sample. In the comparison of the dust mass to stellar mass ratio in Figure \ref{fig:mstar_mdust}, we see that our serendipitously selected galaxies extend to one dex lower dust to stellar mass ratios than the ALESS sample. Others in our sample match the ALESS sample quite well in this respect, though, again showing the diversity and range of physical properties of this sample. The dust temperature comparison in Figure \ref{fig:tdust} shows that the dust temperature of both our sample and the ALESS samples have approximately the same range. However, our sample has a much different distribution, although this could easily be due to small number statistics.
+Comparison of the dust attenuation, dust to stellar mass ratio, and the dust temperature are found in Figures \ref{fig:av_comp}, \ref{fig:mstar_mdust}, \& \ref{fig:tdust}, respectively. The attenuation comparison again demonstrates how some physical properties of our sample are bracketed between the oELG and ALESS samples. Our galaxies have slightly more dust than the oELGs, with a median $A_V = 1$, but they don't go to the very high $A_V$ of 5 or more as seen in the tail of the ALESS sample. In the comparison of the dust mass to stellar mass ratio in Figure \ref{fig:mstar_mdust}, we see that our serendipitously selected galaxies extend to one dex lower dust to stellar mass ratios than the ALESS sample. Others in our sample match the ALESS sample quite well in this respect, though, again showing the diversity and range of physical properties of this sample. The dust temperature comparison in Figure \ref{fig:tdust} shows that the luminosity weighted dust temperature of both our sample and the ALESS samples have approximately the same range. However, our sample has a much different distribution, although this could easily be due to small number statistics. The best fit cold dust temperature for all our galaxies is $\sim 25$K. The fraction of higher $T_{Dust}$ temperatures compared to ALESS is most likely due to a large fraction of the dust luminosity coming from the warm dust in star forming regions.
 
 \begin{figure}[t]
 \centering
@@ -198,7 +198,7 @@ Comparison of the dust attenuation, dust to stellar mass ratio, and the dust tem
 \begin{figure}[t]
 \centering
 \includegraphics[scale=0.8]{ecdf_tdust.pdf}
-\caption{Dust temperature comparison between our sample and the ALESS sample. The ranges of both galaxy samples are approximately the same, though there is a possible multimodality of our serendipitous sample; a larger sample would be needed to explore this more concretely.}
+\caption{Dust temperature comparison between our sample and the ALESS sample. Note that $T_{Dust}$ is the luminosity weighted dust temperature (see equation 8 of \cite{dacunha15}), and not the cold dust temperature. The ranges of both galaxy samples are approximately the same, though there is a possible multimodality of our serendipitous sample; a larger sample would be needed to explore this more concretely.}
 \label{fig:tdust}
 \end{figure}
 
@@ -265,6 +265,7 @@ and the python packages \texttt{IPython}, \texttt{AstroPy},
 \texttt{NumPy}, \texttt{SciPy}, \texttt{scikit-learn}, and \texttt{matplotlib}
  \citep{ipython, astropy, numpy, scipy, scikit-learn, matplotlib}.
 
+I am very grateful to my spouse, friend, and future parenting partner, Lea M.Z. Hagen.
 
 \bibliographystyle{apj}                       %% AASTeX
 \bibliography{mybib}
